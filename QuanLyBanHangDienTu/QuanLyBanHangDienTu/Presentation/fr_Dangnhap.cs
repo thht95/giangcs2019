@@ -36,7 +36,7 @@ namespace QuanLyBanHangDienTu.Presentation
                 ck.PASSWORD = pass;
                 if (!thucthi.kiemtrauser(user, pass))
                 {
-                    MessageBox.Show("Đăng Nhập Thành Công", "Chúc Mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Login Thành Công", "Chúc Mừng", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     fr_Main fr = new fr_Main();
                     this.Hide();
                     fr.Show();
