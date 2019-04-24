@@ -264,5 +264,10 @@ namespace QuanLyBanHangDienTu.Presentation
                 fr.Show();
             }
         }
+
+        private void nhậpDữLiệuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
