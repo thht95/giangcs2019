@@ -15,6 +15,10 @@ namespace QuanLyBanHangDienTu.DataAccess
         {
             return cn.kiemtra("select count(*) from [tb_Khachhang] where makh=N'" + makh + "'");
         }
+        public bool kiemtrasdt(string sdt)
+        {
+            return cn.kiemtra("select count(*) from [tb_Khachhang] where dienthoai=N'" + sdt + "'");
+        }
         public void themmoikh(EC_tb_Khachhang kh)
         {
             string str=(@"INSERT INTO tb_Khachhang ( makh, tenkh, diachi, dienthoai) VALUES   (N'" + kh.MAKH + "',N'" + kh.TENKH + "',N'" + kh.DIACHI + "',N'" + kh.DIENTHOAI + "')");

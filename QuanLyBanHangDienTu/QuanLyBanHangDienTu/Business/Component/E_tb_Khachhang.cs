@@ -30,5 +30,10 @@ namespace QuanLyBanHangDienTu.Business.Component
         {
             khsql.xoakh(kh);
         }
+
+        public bool checkSDT(string sdt)
+        {
+            return khsql.kiemtrasdt(sdt);
+        }
     }
 }
