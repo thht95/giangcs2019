@@ -146,43 +146,50 @@ namespace QuanLyBanHangDienTu.Presentation
         {
             if (txtma.Text != "")
             {
-                if (themmoi == true)
+                if (!thucthi.checkSDT(txtdt.Text))
                 {
-                    try
+                    if (themmoi == true)
                     {
-                        ck.MAKH = txtma.Text;
-                        ck.TENKH = txtten.Text;
-                        ck.DIACHI = txtdc.Text;
-                        ck.DIENTHOAI = txtdt.Text;
+                        try
+                        {
+                            ck.MAKH = txtma.Text;
+                            ck.TENKH = txtten.Text;
+                            ck.DIACHI = txtdc.Text;
+                            ck.DIENTHOAI = txtdt.Text;
 
-                        thucthi.themoikh(ck);
-                        locktext();
-                        hienthi();
-                        MessageBox.Show("Đã Lưu Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            thucthi.themoikh(ck);
+                            locktext();
+                            hienthi();
+                            MessageBox.Show("Đã Lưu Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    else
+                        try
+                        {
+                            ck.MAKH = txtma.Text;
+                            ck.TENKH = txtten.Text;
+                            ck.DIACHI = txtdc.Text;
+                            ck.DIENTHOAI = txtdt.Text;
+
+                            thucthi.suakh(ck);
+                            MessageBox.Show("Đã Sửa Thành Công Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    txtma.Enabled = true;
+                    locktext();
+                    hienthi();
                 }
                 else
-                    try
-                    {
-                        ck.MAKH = txtma.Text;
-                        ck.TENKH = txtten.Text;
-                        ck.DIACHI = txtdc.Text;
-                        ck.DIENTHOAI = txtdt.Text;
-
-                        thucthi.suakh(ck);
-                        MessageBox.Show("Đã Sửa Thành Công Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                txtma.Enabled = true;
-                locktext();
-                hienthi();
+                {
+                    MessageBox.Show("Đã có SĐT này");
+                }
             }
             else
             {
