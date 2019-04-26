@@ -565,6 +565,7 @@
             this.msds.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(238)))));
             this.msds.Location = new System.Drawing.Point(378, 93);
             this.msds.Name = "msds";
+            this.msds.ReadOnly = true;
             this.msds.Size = new System.Drawing.Size(624, 511);
             this.msds.TabIndex = 16;
             this.msds.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.msds_CellClick);
