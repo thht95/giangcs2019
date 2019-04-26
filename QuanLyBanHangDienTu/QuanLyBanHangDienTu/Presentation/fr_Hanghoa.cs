@@ -162,6 +162,51 @@ namespace QuanLyBanHangDienTu.Presentation
             txtma.Enabled = true;
             txtma.Focus();
         }
+
+        //hàm kiểm tra. kiểm tra từ số lượng tới đơn giá nhập rồi đơn giá bán. kiểm tra là số trước. nếu là số thì kiểm tra có > 0 không?
+        private bool check()
+        {
+            int parse1, parse2, parse3;
+
+            if (!int.TryParse(txtsl.Text, out parse1))
+            {
+                MessageBox.Show("Số lượng phải là số và lớn hơn 0");
+                return false;
+            }
+
+            if (parse1 > 0)
+            {
+                MessageBox.Show("Số lượng phải là số và lớn hơn 0");
+                return false;
+            }
+
+            if (!int.TryParse(txtdgn.Text, out parse2))
+            {
+                MessageBox.Show("Đơn giá nhập là số và lớn hơn 0");
+                return false;
+            }
+
+            if (parse2 > 0)
+            {
+                MessageBox.Show("Đơn giá nhập là số và lớn hơn 0");
+                return false;
+            }
+
+            if (!int.TryParse(txtdgb.Text, out parse3))
+            {
+                MessageBox.Show("Đơn giá bán là số và lớn hơn 0");
+                return false;
+            }
+
+            if (parse3 > 0)
+            {
+                MessageBox.Show("Đơn giá bán là số và lớn hơn 0");
+                return false;
+            }
+
+            return true;
+        }
+
         private void btluu_Click(object sender, EventArgs e)
         {
             if (txtma.Text != "")
@@ -172,63 +217,67 @@ namespace QuanLyBanHangDienTu.Presentation
                     {
                         if (cbdvt.Text != "")
                         {
-                            if (themmoi == true)
+                            //thêm điều kiện kiểm tra
+                            if (check())
                             {
-                                try
+                                if (themmoi == true)
                                 {
-                                    byte[] imageData = ReadFile(lbimgpath.Text);
-                                    ck.MAHANG = txtma.Text;
-                                    ck.TENHANG = txtten.Text;
-                                    ck.MANHOM = cbn.Text;
-                                    ck.MALOAI = cbl.Text;
-                                    ck.MADONVI = cbdvt.Text;
-                                    ck.MACHATLIEU = cbcl.Text;
-                                    ck.MANUOC = cbsx.Text;
-                                    ck.SOLUONG = txtsl.Text;
-                                    ck.DONGIANHAP = txtdgn.Text;
-                                    ck.DONGIABAN = txtdgb.Text;
-                                    ck.THOAIGIANBH = txtngay.Text;
-                                    ck.HINHANH = imageData;
-                                    ck.GHICHU = txtghichu.Text;
+                                    try
+                                    {
+                                        byte[] imageData = ReadFile(lbimgpath.Text);
+                                        ck.MAHANG = txtma.Text;
+                                        ck.TENHANG = txtten.Text;
+                                        ck.MANHOM = cbn.Text;
+                                        ck.MALOAI = cbl.Text;
+                                        ck.MADONVI = cbdvt.Text;
+                                        ck.MACHATLIEU = cbcl.Text;
+                                        ck.MANUOC = cbsx.Text;
+                                        ck.SOLUONG = txtsl.Text;
+                                        ck.DONGIANHAP = txtdgn.Text;
+                                        ck.DONGIABAN = txtdgb.Text;
+                                        ck.THOAIGIANBH = txtngay.Text;
+                                        ck.HINHANH = imageData;
+                                        ck.GHICHU = txtghichu.Text;
 
-                                    thucthi.themoisp(ck);
-                                    locktext();
-                                    hienthi();
-                                    MessageBox.Show("Đã Lưu Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        thucthi.themoisp(ck);
+                                        locktext();
+                                        hienthi();
+                                        MessageBox.Show("Đã Lưu Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
                                 }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+                                else
+                                    try
+                                    {
+                                        byte[] imageData = ReadFile(lbimgpath.Text);
+                                        ck.MAHANG = txtma.Text;
+                                        ck.TENHANG = txtten.Text;
+                                        ck.MANHOM = cbn.Text;
+                                        ck.MALOAI = cbl.Text;
+                                        ck.MADONVI = cbdvt.Text;
+                                        ck.MACHATLIEU = cbcl.Text;
+                                        ck.MANUOC = cbsx.Text;
+                                        ck.SOLUONG = txtsl.Text;
+                                        ck.DONGIANHAP = txtdgn.Text;
+                                        ck.DONGIABAN = txtdgb.Text;
+                                        ck.THOAIGIANBH = txtngay.Text;
+                                        ck.HINHANH = imageData;
+                                        ck.GHICHU = txtghichu.Text;
+
+                                        thucthi.suasp(ck);
+                                        MessageBox.Show("Đã Sửa Thành Công Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                txtma.Enabled = true;
+                                locktext();
+                                hienthi();
                             }
-                            else
-                                try
-                                {
-                                    byte[] imageData = ReadFile(lbimgpath.Text);
-                                    ck.MAHANG = txtma.Text;
-                                    ck.TENHANG = txtten.Text;
-                                    ck.MANHOM = cbn.Text;
-                                    ck.MALOAI = cbl.Text;
-                                    ck.MADONVI = cbdvt.Text;
-                                    ck.MACHATLIEU = cbcl.Text;
-                                    ck.MANUOC = cbsx.Text;
-                                    ck.SOLUONG = txtsl.Text;
-                                    ck.DONGIANHAP = txtdgn.Text;
-                                    ck.DONGIABAN = txtdgb.Text;
-                                    ck.THOAIGIANBH = txtngay.Text;
-                                    ck.HINHANH = imageData;
-                                    ck.GHICHU = txtghichu.Text;
-
-                                    thucthi.suasp(ck);
-                                    MessageBox.Show("Đã Sửa Thành Công Thành Công", "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(ex.ToString(), "Chú Ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            txtma.Enabled = true;
-                            locktext();
-                            hienthi();
                         }
                         else
                         {
