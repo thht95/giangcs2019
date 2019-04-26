@@ -174,7 +174,7 @@ namespace QuanLyBanHangDienTu.Presentation
                 return false;
             }
 
-            if (parse1 >= 0)
+            if (parse1 < 0)
             {
                 MessageBox.Show("Số lượng phải là số và lớn hơn 0");
                 return false;
@@ -186,7 +186,7 @@ namespace QuanLyBanHangDienTu.Presentation
                 return false;
             }
 
-            if (parse2 >= 0)
+            if (parse2 < 0)
             {
                 MessageBox.Show("Đơn giá nhập là số và lớn hơn 0");
                 return false;
@@ -198,7 +198,7 @@ namespace QuanLyBanHangDienTu.Presentation
                 return false;
             }
 
-            if (parse3 >= 0)
+            if (parse3 < 0)
             {
                 MessageBox.Show("Đơn giá bán là số và lớn hơn 0");
                 return false;
